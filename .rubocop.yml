@@ -1,0 +1,10 @@
+Style/ClassAndModuleChildren:
+  Exclude:
+    - test/**/*
+
+Metrics/BlockLength:
+  Exclude:
+    - test/**/*
+
+String/StringLiterals:
+  EnforcedStyle: single_quotes
