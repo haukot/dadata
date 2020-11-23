@@ -1,10 +1,16 @@
-Style/ClassAndModuleChildren:
-  Exclude:
-    - test/**/*
+AllCops:
+  NewCops: enable
+
+Layout/LineLength:
+  Max: 80
 
 Metrics/BlockLength:
   Exclude:
     - test/**/*
 
-String/StringLiterals:
+Style/ClassAndModuleChildren:
+  Exclude:
+    - test/**/*
+
+Style/StringLiterals:
   EnforcedStyle: single_quotes
