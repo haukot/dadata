@@ -25,10 +25,13 @@ require 'dadata'
 
 dadata = Dadata::Suggestion.new(api_key: 'YOURKEY')
 dadata.organization('ООО Рога и копыта')
-# => { suggestions: {{ value: "ПАО БАНК", ... }] }
+# => [{ value: "ПАО БАНК", ... }]
 
 dadata.address_by_id('203221a4-dde4-4954-99cb-e788df9d0ce8')
-# => { suggestions: [{ value: "г Казань, ул Кремлевская, д 1", ... }] }
+# => [{ value: "г Казань, ул Кремлевская, д 1", ... }]
+
+dadata.address_by_str('Ижевск г, Устиновский район, Им Конструктора Калашникова М.Т. пр-кт, 17')
+# => [{ value: "г Ижевск, пр-кт Им Конструктора Калашникова М.Т., д 17", ... }]
 ```
 
 ## Contributing

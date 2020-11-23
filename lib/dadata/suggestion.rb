@@ -12,12 +12,16 @@ module Dadata
       @config = config
     end
 
-    def organization(query: term)
+    def organization(query: nil)
       call_method('suggest/party', query: query)
     end
 
-    def address_by_fias_id(query: fias_id)
-      call_method('findById/address', query: query)
+    def address_by_fias_id(fias_id: nil)
+      call_method('findById/address', query: fias_id)
+    end
+
+    def address_by_str(query: nil)
+      call_method('suggest/address', query: query)
     end
 
     private
