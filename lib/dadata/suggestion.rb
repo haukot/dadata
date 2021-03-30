@@ -38,11 +38,14 @@ module Dadata
       req.body = query_data.to_json
 
       resp = perform_request(url, req)
-
-      if resp.code == '200'
-        [true, JSON.parse(resp.body, symbolize_names: true)[:suggestions]]
+      if resp.is_a?(Net::HTTPResponse)
+        if resp.code == '200'
+          [true, JSON.parse(resp.body, symbolize_names: true)[:suggestions]]
+        else
+          [false, { code: resp.code.to_i, message: resp.body }]
+        end
       else
-        [false, { code: resp.code.to_i, message: resp.body }]
+        [false, { message: resp }]
       end
     end
 
@@ -50,6 +53,8 @@ module Dadata
       http = Net::HTTP.new(url.host, url.port)
       http.use_ssl = true
       http.request(request)
+    rescue StandardError => e
+      e
     end
   end
 end

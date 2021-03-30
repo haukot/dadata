@@ -42,6 +42,20 @@ class Dadata::SuggestionTest < Minitest::Test
     assert_equal({ code: code, message: message }, result)
   end
 
+  def test_organization_returns_false_with_message_when_connection_error
+    term = FFaker::Company.name
+
+    url = 'https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/party'
+    stub_request(:post, url)
+      .with(body: { query: term }.to_json).and_timeout
+
+    ok, result = @subject.organization(query: term)
+
+    refute ok
+    assert_equal({ message: Net::OpenTimeout.new('execution expired') }.to_s,
+                 result.to_s)
+  end
+
   def test_address_by_fias_id_returns_true_with_hash
     fias_id = SecureRandom.uuid
 

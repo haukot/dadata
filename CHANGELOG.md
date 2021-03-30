@@ -1,10 +1,14 @@
 # CHANGELOG
 
+## 0.3.1 - 2021-03-30
+
+* Add rescue block to network request method.
+
 ## 0.3.0 - 2020-11-23
 
 * Support address by string method.
 * Fix default keyword argument values.
-* Fix README examples
+* Fix README examples.
 
 ## 0.2.0 - 2020-11-19
 
