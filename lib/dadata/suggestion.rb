@@ -12,8 +12,8 @@ module Dadata
       @config = config
     end
 
-    def organization(query: nil)
-      call_method('suggest/party', query: query)
+    def organization(options)
+      call_method('suggest/party', options)
     end
 
     def address_by_fias_id(fias_id: nil)
